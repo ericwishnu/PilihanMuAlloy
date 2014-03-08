@@ -1,109 +1,26 @@
 function Controller() {
     function loadKandidat() {
-        var httpclient = "http://api.pemiluapi.org/candidate/api/caleg?apiKey=fea6f7d9ec0b31e256a673114792cb17&";
-        var dapil = "dapil=" + args[1];
-        httpclient = httpclient.concat(dapil);
-        var tahun = "&tahun=" + args[3];
-        httpclient = httpclient.concat(tahun);
-        var lembaga = "&lembaga=" + args[2];
-        httpclient = httpclient.concat(lembaga);
-        var provinsi = "&provinsi=" + args[0];
-        httpclient = httpclient.concat(provinsi);
-        Ti.API.log(httpclient);
-        kandidatHTTPClient.open("GET", httpclient);
+        kandidatHTTPClient.open("GET", "http://api.pemiluapi.org/candidate/api/caleg?apiKey=fea6f7d9ec0b31e256a673114792cb17&limit=10");
         kandidatHTTPClient.send();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "kandidat";
-    var __parentSymbol = arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __alloyId4 = [];
-    $.__views.master = Alloy.createController("master", {
-        id: "master",
-        __parentSymbol: __parentSymbol
-    });
-    $.__views.beritaTab = Ti.UI.createTab({
-        window: $.__views.master.getViewEx({
-            recurse: true
-        }),
-        title: "Berita",
-        id: "beritaTab",
-        icon: "KS_nav_ui.png"
-    });
-    __alloyId4.push($.__views.beritaTab);
-    $.__views.__alloyId6 = Ti.UI.createWindow({
+    $.__views.kandidat = Ti.UI.createWindow({
         backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "__alloyId6"
+        id: "kandidat"
     });
+    $.__views.kandidat && $.addTopLevelView($.__views.kandidat);
     $.__views.kandidatTableView = Ti.UI.createTableView({
         id: "kandidatTableView"
     });
-    $.__views.__alloyId6.add($.__views.kandidatTableView);
-    $.__views.kandidatTab = Ti.UI.createTab({
-        window: $.__views.__alloyId6,
-        title: "Kandidat",
-        id: "kandidatTab",
-        icon: "KS_nav_views.png",
-        active: "true"
-    });
-    __alloyId4.push($.__views.kandidatTab);
-    $.__views.partaiTWin = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "partaiTWin",
-        title: "Partai"
-    });
-    $.__views.__alloyId7 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        text: "Partai",
-        id: "__alloyId7"
-    });
-    $.__views.partaiTWin.add($.__views.__alloyId7);
-    $.__views.partaiTab = Ti.UI.createTab({
-        window: $.__views.partaiTWin,
-        title: "Partai",
-        id: "partaiTab",
-        icon: "KS_nav_views.png",
-        active: "false"
-    });
-    __alloyId4.push($.__views.partaiTab);
-    $.__views.tentangWin = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "tentangWin",
-        title: "Tentang"
-    });
-    $.__views.__alloyId8 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        text: "Tentang",
-        id: "__alloyId8"
-    });
-    $.__views.tentangWin.add($.__views.__alloyId8);
-    $.__views.tentangTab = Ti.UI.createTab({
-        window: $.__views.tentangWin,
-        title: "Tentang",
-        id: "tentangTab",
-        icon: "KS_nav_views.png",
-        active: "false"
-    });
-    __alloyId4.push($.__views.tentangTab);
-    $.__views.tabGroup = Ti.UI.createTabGroup({
-        tabs: __alloyId4,
-        id: "tabGroup"
-    });
-    $.__views.tabGroup && $.addTopLevelView($.__views.tabGroup);
+    $.__views.kandidat.add($.__views.kandidatTableView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.tabGroup.setActiveTab(1);
     Titanium.UI.currentWindow;
     var kandidatTableView = $.kandidatTableView;
     var data = [];
@@ -113,7 +30,6 @@ function Controller() {
             jsonObject.data.results;
             var caleg = jsonObject.data.results.caleg;
             var total = jsonObject.data.results.count;
-            alert(total);
             for (var i = 0; total > i; i++) {
                 var aFeed = caleg[i];
                 var row = Titanium.UI.createTableViewRow({
@@ -191,7 +107,7 @@ function Controller() {
             alert("Failed to retrieve data. \n Please make sure you're connected to internet.");
             isLoad || (isLoad = false);
         },
-        timeout: 7e3
+        timeout: 3e3
     });
     kandidatTableView.addEventListener("scroll", function() {});
     kandidatTableView.addEventListener("dragEnd", function() {});
@@ -211,7 +127,6 @@ function Controller() {
         Titanium.UI.currentTab.open(detailWindow);
     });
     loadKandidat();
-    Ti.API.log(args[0]);
     _.extend($, exports);
 }
 

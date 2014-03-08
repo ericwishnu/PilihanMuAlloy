@@ -6,7 +6,7 @@
 		</Tab>
 		<Tab title="Kandidat" id="kandidatTab"  icon="KS_nav_views.png">
 			
-				<Require id="kandidat" src="kandidat" platform="android"/>
+				<Require id="kandidatQuery" src="kandidatQuery" platform="android"/>
 			
 		</Tab>
 		<Tab title="Partai" id="partaiTab" icon="KS_nav_views.png">

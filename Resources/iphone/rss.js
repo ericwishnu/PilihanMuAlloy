@@ -47,7 +47,7 @@ exports.loadRssFeed = function(o, tries) {
             var item = items.item(i);
             var image;
             try {
-                var elems = item.getElementsByTagNameNS("http://mashable.com/rss", "thumbnail");
+                var elems = item.getElementsByTagNameNS("http://103.23.20.184/feed/", "thumbnail");
                 image = Ti.XML.parseString(elems.item(0).textContent).getElementsByTagName("img").item(0).getAttribute("src");
             } catch (ex) {
                 image = "";

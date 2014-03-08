@@ -19,11 +19,11 @@ function Controller() {
         icon: "KS_nav_ui.png"
     });
     __alloyId0.push($.__views.beritaTab);
-    $.__views.kandidat = Alloy.createController("kandidat", {
-        id: "kandidat"
+    $.__views.kandidatQuery = Alloy.createController("kandidatQuery", {
+        id: "kandidatQuery"
     });
     $.__views.kandidatTab = Ti.UI.createTab({
-        window: $.__views.kandidat.getViewEx({
+        window: $.__views.kandidatQuery.getViewEx({
             recurse: true
         }),
         title: "Kandidat",
@@ -37,7 +37,7 @@ function Controller() {
         id: "partaiTWin",
         title: "Partai"
     });
-    $.__views.__alloyId3 = Ti.UI.createLabel({
+    $.__views.__alloyId2 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
@@ -47,9 +47,9 @@ function Controller() {
         },
         textAlign: "center",
         text: "Partai",
-        id: "__alloyId3"
+        id: "__alloyId2"
     });
-    $.__views.partaiTWin.add($.__views.__alloyId3);
+    $.__views.partaiTWin.add($.__views.__alloyId2);
     $.__views.partaiTab = Ti.UI.createTab({
         window: $.__views.partaiTWin,
         title: "Partai",
@@ -63,7 +63,7 @@ function Controller() {
         id: "tentangWin",
         title: "Tentang"
     });
-    $.__views.__alloyId4 = Ti.UI.createLabel({
+    $.__views.__alloyId3 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
@@ -73,9 +73,9 @@ function Controller() {
         },
         textAlign: "center",
         text: "Tentang",
-        id: "__alloyId4"
+        id: "__alloyId3"
     });
-    $.__views.tentangWin.add($.__views.__alloyId4);
+    $.__views.tentangWin.add($.__views.__alloyId3);
     $.__views.tentangTab = Ti.UI.createTab({
         window: $.__views.tentangWin,
         title: "Tentang",

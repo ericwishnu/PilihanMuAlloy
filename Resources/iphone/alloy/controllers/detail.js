@@ -11,6 +11,11 @@ function Controller() {
         id: "detail"
     });
     $.__views.detail && $.addTopLevelView($.__views.detail);
+    $.__views.header = Alloy.createController("header", {
+        id: "header",
+        __parentSymbol: $.__views.detail
+    });
+    $.__views.header.setParent($.__views.detail);
     $.__views.web = Ti.UI.createWebView({
         id: "web"
     });

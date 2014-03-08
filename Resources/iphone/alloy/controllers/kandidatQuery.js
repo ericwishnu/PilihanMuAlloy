@@ -1,109 +1,105 @@
 function Controller() {
     function loadKandidat() {
-        var httpclient = "http://api.pemiluapi.org/candidate/api/caleg?apiKey=fea6f7d9ec0b31e256a673114792cb17&";
-        var dapil = "dapil=" + args[1];
-        httpclient = httpclient.concat(dapil);
-        var tahun = "&tahun=" + args[3];
-        httpclient = httpclient.concat(tahun);
-        var lembaga = "&lembaga=" + args[2];
-        httpclient = httpclient.concat(lembaga);
-        var provinsi = "&provinsi=" + args[0];
-        httpclient = httpclient.concat(provinsi);
-        Ti.API.log(httpclient);
-        kandidatHTTPClient.open("GET", httpclient);
+        kandidatHTTPClient.open("GET", "http://api.pemiluapi.org/candidate/api/provinsi?apiKey=06ec082d057daa3d310b27483cc3962e");
         kandidatHTTPClient.send();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "kandidat";
-    var __parentSymbol = arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    this.__controllerPath = "kandidatQuery";
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __alloyId4 = [];
-    $.__views.master = Alloy.createController("master", {
-        id: "master",
-        __parentSymbol: __parentSymbol
+    $.__views.win = Ti.UI.createWindow({
+        backgroundColor: "white",
+        id: "win"
     });
-    $.__views.beritaTab = Ti.UI.createTab({
-        window: $.__views.master.getViewEx({
-            recurse: true
-        }),
-        title: "Berita",
-        id: "beritaTab",
-        icon: "KS_nav_ui.png"
-    });
-    __alloyId4.push($.__views.beritaTab);
-    $.__views.__alloyId6 = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "__alloyId6"
-    });
-    $.__views.kandidatTableView = Ti.UI.createTableView({
+    $.__views.win && $.addTopLevelView($.__views.win);
+    $.__views.kandidatTableView = Ti.UI.createPicker({
         id: "kandidatTableView"
     });
-    $.__views.__alloyId6.add($.__views.kandidatTableView);
-    $.__views.kandidatTab = Ti.UI.createTab({
-        window: $.__views.__alloyId6,
-        title: "Kandidat",
-        id: "kandidatTab",
-        icon: "KS_nav_views.png",
-        active: "true"
+    $.__views.win.add($.__views.kandidatTableView);
+    $.__views.picker = Ti.UI.createPicker({
+        id: "picker",
+        top: "70",
+        selectionIndicator: "true",
+        useSpinner: "false",
+        width: Ti.UI.FILL,
+        height: "60"
     });
-    __alloyId4.push($.__views.kandidatTab);
-    $.__views.partaiTWin = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "partaiTWin",
-        title: "Partai"
+    $.__views.win.add($.__views.picker);
+    var __alloyId7 = [];
+    $.__views.lembaga = Ti.UI.createPickerColumn({
+        id: "lembaga"
     });
-    $.__views.__alloyId7 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        text: "Partai",
-        id: "__alloyId7"
-    });
-    $.__views.partaiTWin.add($.__views.__alloyId7);
-    $.__views.partaiTab = Ti.UI.createTab({
-        window: $.__views.partaiTWin,
-        title: "Partai",
-        id: "partaiTab",
-        icon: "KS_nav_views.png",
-        active: "false"
-    });
-    __alloyId4.push($.__views.partaiTab);
-    $.__views.tentangWin = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "tentangWin",
-        title: "Tentang"
-    });
-    $.__views.__alloyId8 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        text: "Tentang",
+    __alloyId7.push($.__views.lembaga);
+    $.__views.__alloyId8 = Ti.UI.createPickerRow({
+        title: "DPR",
         id: "__alloyId8"
     });
-    $.__views.tentangWin.add($.__views.__alloyId8);
-    $.__views.tentangTab = Ti.UI.createTab({
-        window: $.__views.tentangWin,
-        title: "Tentang",
-        id: "tentangTab",
-        icon: "KS_nav_views.png",
-        active: "false"
+    $.__views.lembaga.addRow($.__views.__alloyId8);
+    $.__views.__alloyId9 = Ti.UI.createPickerRow({
+        title: "DPD",
+        id: "__alloyId9"
     });
-    __alloyId4.push($.__views.tentangTab);
-    $.__views.tabGroup = Ti.UI.createTabGroup({
-        tabs: __alloyId4,
-        id: "tabGroup"
+    $.__views.lembaga.addRow($.__views.__alloyId9);
+    $.__views.__alloyId10 = Ti.UI.createPickerRow({
+        title: "DPRDI",
+        id: "__alloyId10"
     });
-    $.__views.tabGroup && $.addTopLevelView($.__views.tabGroup);
+    $.__views.lembaga.addRow($.__views.__alloyId10);
+    $.__views.__alloyId11 = Ti.UI.createPickerRow({
+        title: "DPRDII",
+        id: "__alloyId11"
+    });
+    $.__views.lembaga.addRow($.__views.__alloyId11);
+    $.__views.picker.add(__alloyId7);
+    $.__views.picker = Ti.UI.createPicker({
+        id: "picker",
+        top: "130",
+        selectionIndicator: "true",
+        useSpinner: "false",
+        width: Ti.UI.FILL,
+        height: "60"
+    });
+    $.__views.win.add($.__views.picker);
+    var __alloyId12 = [];
+    $.__views.year = Ti.UI.createPickerColumn({
+        id: "year"
+    });
+    __alloyId12.push($.__views.year);
+    $.__views.__alloyId13 = Ti.UI.createPickerRow({
+        title: "2014",
+        id: "__alloyId13"
+    });
+    $.__views.year.addRow($.__views.__alloyId13);
+    $.__views.__alloyId14 = Ti.UI.createPickerRow({
+        title: "2013",
+        id: "__alloyId14"
+    });
+    $.__views.year.addRow($.__views.__alloyId14);
+    $.__views.__alloyId15 = Ti.UI.createPickerRow({
+        title: "2012",
+        id: "__alloyId15"
+    });
+    $.__views.year.addRow($.__views.__alloyId15);
+    $.__views.__alloyId16 = Ti.UI.createPickerRow({
+        title: "2011",
+        id: "__alloyId16"
+    });
+    $.__views.year.addRow($.__views.__alloyId16);
+    $.__views.picker.add(__alloyId12);
+    $.__views.__alloyId17 = Ti.UI.createButton({
+        title: "Search",
+        top: "190",
+        width: "90",
+        height: "35",
+        borderRadius: "1",
+        id: "__alloyId17"
+    });
+    $.__views.win.add($.__views.__alloyId17);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.tabGroup.setActiveTab(1);
     Titanium.UI.currentWindow;
     var kandidatTableView = $.kandidatTableView;
     var data = [];
@@ -111,11 +107,10 @@ function Controller() {
         onload: function() {
             var jsonObject = JSON.parse(this.responseText);
             jsonObject.data.results;
-            var caleg = jsonObject.data.results.caleg;
+            jsonObject.data.results.provinsi;
             var total = jsonObject.data.results.count;
-            alert(total);
             for (var i = 0; total > i; i++) {
-                var aFeed = caleg[i];
+                var aFeed = provinsi[i];
                 var row = Titanium.UI.createTableViewRow({
                     _nama: aFeed.nama,
                     _id: aFeed.id,
@@ -150,15 +145,6 @@ function Controller() {
                     color: "#9a9"
                 });
                 row.add(descriptionLabel);
-                var image = aFeed.foto_url;
-                var iconImage = Titanium.UI.createImageView({
-                    image: image,
-                    width: 50,
-                    height: 50,
-                    left: 10,
-                    top: 10
-                });
-                row.add(iconImage);
                 data.push(row);
             }
             kandidatTableView.data = data;
@@ -191,10 +177,8 @@ function Controller() {
             alert("Failed to retrieve data. \n Please make sure you're connected to internet.");
             isLoad || (isLoad = false);
         },
-        timeout: 7e3
+        timeout: 3e3
     });
-    kandidatTableView.addEventListener("scroll", function() {});
-    kandidatTableView.addEventListener("dragEnd", function() {});
     kandidatTableView.addEventListener("click", function(e) {
         var selectedRow = e.rowData;
         var detailWindow = Titanium.UI.createWindow({
@@ -211,7 +195,6 @@ function Controller() {
         Titanium.UI.currentTab.open(detailWindow);
     });
     loadKandidat();
-    Ti.API.log(args[0]);
     _.extend($, exports);
 }
 

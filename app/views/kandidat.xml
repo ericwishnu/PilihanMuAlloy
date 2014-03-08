@@ -1,9 +1,23 @@
 <Alloy>
-	<Window>
-		
-		<TableView id="kandidatTableView">
-	
-		</TableView>
-	</Window>
+	<TabGroup id="tabGroup">
+		<Tab title="Berita" id="beritaTab" icon="KS_nav_ui.png" >
+			<Require id="master" src="master" platform="android"/>
+		</Tab>
+		<Tab title="Kandidat" id="kandidatTab"  icon="KS_nav_views.png" active="true">
+			<Window>
+				<TableView id="kandidatTableView"></TableView>
+			</Window>
+		</Tab>
+		<Tab title="Partai" id="partaiTab" icon="KS_nav_views.png" active="false">
+			<Window id="partaiTWin" title="Partai">
+				<Label>Partai</Label>
+			</Window>
+		</Tab>
+		<Tab title="Tentang" id="tentangTab" icon="KS_nav_views.png" active="false">
+			<Window id="tentangWin" title="Tentang">
+				<Label>Tentang</Label>
+			</Window>
+		</Tab>
+	</TabGroup>
 
 </Alloy>
