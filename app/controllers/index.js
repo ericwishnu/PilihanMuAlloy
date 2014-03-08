@@ -1,6 +1,3 @@
-
-
-
 var isIpad = OS_IOS && Alloy.isTablet;
 var usesNavGroup = (OS_IOS && Alloy.isHandheld) || OS_MOBILEWEB;
 
@@ -32,16 +29,62 @@ $.master.on('detail', function(e) {
 
 if (OS_ANDROID) {
     $.tabGroup.open();
-    
+
     //$.master.getView().open();
 } else {
-    
+
     // $.tabGroup.open();
 }
 
-
 function doClick(e) {
+    var settingWin = Ti.UI.createWindow({
+
+        title : 'Setting'
+    });
+
+    var settingTableView = Ti.UI.createTableView({
+        title : 'settingTableView'
+    });
+
+    var accountTableRow = Ti.UI.createTableViewRow({
+        title : 'Account',
+        height : '100dp'
+    });
+
+    var accountLabel = Ti.UI.createLabel({
+        text : 'Account',
+        color : '#fff'
+    });
+    accountTableRow.addEventListener('click', function(e) {
+        alert('ACCOUNT');
+    });
+    accountTableRow.add(accountLabel);
+
+    var aboutTableRow = Ti.UI.createTableViewRow({
+        title : 'About',
+        height : '100dp'
+    });
+    var aboutLabel = Ti.UI.createLabel({
+        text : 'About',
+        color : '#fff',
+
+    });
+    aboutTableRow.add(aboutLabel);
     
+    aboutTableRow.addEventListener('click',function(e){
+        alert('ABOUT');
+    });
+    
+    
+    var data = [];
+    data.push(accountTableRow);
+    data.push(aboutTableRow);
+    settingTableView.data = data;
+
+    // settingTableView.add(accountTableRow);
+    // settingTableView.add(aboutTableRow);
+    settingWin.add(settingTableView);
+    settingWin.open();
     Ti.API.info("Menu item clicked: " + e.source.title);
 }
 
@@ -49,5 +92,4 @@ function doClick(e) {
 function doOpen(e) {
     $.win.invalidateOptionsMenu();
 }
-
 

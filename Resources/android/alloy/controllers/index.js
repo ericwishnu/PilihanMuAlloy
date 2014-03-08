@@ -6,7 +6,7 @@ function Controller() {
                 id: "menuItem",
                 title: "",
                 icon: "configure.png",
-                showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
+                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM
             };
             $.__views.menuItem = e.menu.add(_.pick(__alloyId5, Alloy.Android.menuItemCreateArgs));
             $.__views.menuItem.applyProperties(_.omit(__alloyId5, Alloy.Android.menuItemCreateArgs));
@@ -18,6 +18,42 @@ function Controller() {
         }
     }
     function doClick(e) {
+        var settingWin = Ti.UI.createWindow({
+            title: "Setting"
+        });
+        var settingTableView = Ti.UI.createTableView({
+            title: "settingTableView"
+        });
+        var accountTableRow = Ti.UI.createTableViewRow({
+            title: "Account",
+            height: "100dp"
+        });
+        var accountLabel = Ti.UI.createLabel({
+            text: "Account",
+            color: "#fff"
+        });
+        accountTableRow.addEventListener("click", function() {
+            alert("ACCOUNT");
+        });
+        accountTableRow.add(accountLabel);
+        var aboutTableRow = Ti.UI.createTableViewRow({
+            title: "About",
+            height: "100dp"
+        });
+        var aboutLabel = Ti.UI.createLabel({
+            text: "About",
+            color: "#fff"
+        });
+        aboutTableRow.add(aboutLabel);
+        aboutTableRow.addEventListener("click", function() {
+            alert("ABOUT");
+        });
+        var data = [];
+        data.push(accountTableRow);
+        data.push(aboutTableRow);
+        settingTableView.data = data;
+        settingWin.add(settingTableView);
+        settingWin.open();
         Ti.API.info("Menu item clicked: " + e.source.title);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));

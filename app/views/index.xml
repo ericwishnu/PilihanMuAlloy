@@ -2,11 +2,11 @@
 	
 	<TabGroup id="tabGroup">
 		<Menu id="menu" platform="android">
-
             <!-- Cannot specify node text.  Use attributes only. -->
-            <MenuItem id="menuItem" title="" icon="configure.png" onClick="doClick" showAsAction="Ti.Android.SHOW_AS_ACTION_ALWAYS" />
+            <MenuItem id="menuItem" title="" icon="configure.png" onClick="doClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM" />
             
         </Menu>
+        
 		<Tab title="Berita" id="beritaTab" >
 			<Require id="master" src="master" platform="android"/>
 
