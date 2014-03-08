@@ -87,27 +87,13 @@ function Controller() {
         id: "kandidatTab"
     });
     __alloyId0.push($.__views.kandidatTab);
-    $.__views.partaiWin = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "partaiWin",
-        title: "Partai"
+    $.__views.partai = Alloy.createController("partai", {
+        id: "partai"
     });
-    $.__views.__alloyId3 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        font: {
-            fontSize: 20,
-            fontFamily: "Helvetica Neue"
-        },
-        textAlign: "center",
-        text: "Partai",
-        id: "__alloyId3"
-    });
-    $.__views.partaiWin.add($.__views.__alloyId3);
     $.__views.partaiTab = Ti.UI.createTab({
-        window: $.__views.partaiWin,
+        window: $.__views.partai.getViewEx({
+            recurse: true
+        }),
         title: "Partai",
         id: "partaiTab"
     });

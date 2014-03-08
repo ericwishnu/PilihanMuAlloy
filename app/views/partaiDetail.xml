@@ -1,0 +1,12 @@
+<Alloy>
+<Window id="partaiDetail">
+	<View layout="vertical">
+	<Label id="partaiName"/>
+	<Label id="partaiLongName"/>
+	<ImageView id="partaiImage"/>
+	<Label id="partaiWebsite"/>
+	<Label id="partaiFacebook"/>
+	<Label id="partaiTwitter"/>
+	</View>
+</Window>
+</Alloy>

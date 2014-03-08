@@ -17,9 +17,7 @@
 
 		</Tab>
 		<Tab title="Partai" id="partaiTab">
-			<Window id="partaiWin" title="Partai">
-				<Label>Partai</Label>
-			</Window>
+			<Require id="partai" src="partai" platform="android"/>
 		</Tab>
 		<Tab title="Tentang" id="tentangTab" >
 			<Window id="tentangWin" title="Tentang">

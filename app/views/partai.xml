@@ -1,4 +1,9 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window>
+		
+		<TableView id="partaiTableView">
+	
+		</TableView>
+	</Window>
+
 </Alloy>
