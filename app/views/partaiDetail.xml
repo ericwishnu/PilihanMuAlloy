@@ -1,5 +1,5 @@
 <Alloy>
-<Window id="partaiDetail">
+<Window id="partaiDetail" navBarHidden="false">
 	<View layout="vertical">
 	<Label id="partaiName"/>
 	<Label id="partaiLongName"/>

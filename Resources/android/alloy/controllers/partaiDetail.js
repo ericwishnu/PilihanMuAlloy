@@ -8,7 +8,7 @@ function Controller() {
     var exports = {};
     $.__views.partaiDetail = Ti.UI.createWindow({
         backgroundColor: "#fff",
-        navBarHidden: true,
+        navBarHidden: "false",
         id: "partaiDetail"
     });
     $.__views.partaiDetail && $.addTopLevelView($.__views.partaiDetail);
@@ -70,6 +70,7 @@ function Controller() {
     $.partaiName.text = args._nama;
     $.partaiLongName.text = args._nama_lengkap;
     $.partaiImage.image = args._url_logo_medium;
+    $.partaiDetail.title = "Partai";
     $.partaiDetail.open();
     _.extend($, exports);
 }
