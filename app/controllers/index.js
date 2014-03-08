@@ -40,4 +40,14 @@ if (OS_ANDROID) {
 }
 
 
+function doClick(e) {
+    
+    Ti.API.info("Menu item clicked: " + e.source.title);
+}
+
+// Ensure menu is displayed
+function doOpen(e) {
+    $.win.invalidateOptionsMenu();
+}
+
 

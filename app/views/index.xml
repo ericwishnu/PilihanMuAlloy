@@ -1,20 +1,27 @@
 <Alloy>
+	
 	<TabGroup id="tabGroup">
-		<Tab title="Berita" id="beritaTab" icon="KS_nav_ui.png">
+		<Menu id="menu" platform="android">
+
+            <!-- Cannot specify node text.  Use attributes only. -->
+            <MenuItem id="menuItem" title="" icon="configure.png" onClick="doClick" showAsAction="Ti.Android.SHOW_AS_ACTION_ALWAYS" />
+            
+        </Menu>
+		<Tab title="Berita" id="beritaTab" >
 			<Require id="master" src="master" platform="android"/>
-			
+
 		</Tab>
-		<Tab title="Kandidat" id="kandidatTab"  icon="KS_nav_views.png">
-			
-				<Require id="kandidat" src="kandidat" platform="android"/>
-			
+		<Tab title="Kandidat" id="kandidatTab" >
+
+			<Require id="kandidat" src="kandidat" platform="android"/>
+
 		</Tab>
-		<Tab title="Partai" id="partaiTab" icon="KS_nav_views.png">
-			<Window id="partaiTWin" title="Partai">
+		<Tab title="Partai" id="partaiTab">
+			<Window id="partaiWin" title="Partai">
 				<Label>Partai</Label>
 			</Window>
 		</Tab>
-		<Tab title="Tentang" id="tentangTab" icon="KS_nav_views.png">
+		<Tab title="Tentang" id="tentangTab" >
 			<Window id="tentangWin" title="Tentang">
 				<Label>Tentang</Label>
 			</Window>

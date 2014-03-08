@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId8() {
-        $.__views.master.removeEventListener("open", __alloyId8);
+    function __alloyId10() {
+        $.__views.master.removeEventListener("open", __alloyId10);
         if ($.__views.master.activity) $.__views.master.activity.onCreateOptionsMenu = function(e) {
-            var __alloyId7 = {
+            var __alloyId9 = {
                 title: "Refresh",
                 icon: "/refresh_icon.png",
-                id: "__alloyId6"
+                id: "__alloyId8"
             };
-            $.__views.__alloyId6 = e.menu.add(_.pick(__alloyId7, Alloy.Android.menuItemCreateArgs));
-            $.__views.__alloyId6.applyProperties(_.omit(__alloyId7, Alloy.Android.menuItemCreateArgs));
-            refreshRss ? $.__views.__alloyId6.addEventListener("click", refreshRss) : __defers["$.__views.__alloyId6!click!refreshRss"] = true;
+            $.__views.__alloyId8 = e.menu.add(_.pick(__alloyId9, Alloy.Android.menuItemCreateArgs));
+            $.__views.__alloyId8.applyProperties(_.omit(__alloyId9, Alloy.Android.menuItemCreateArgs));
+            refreshRss ? $.__views.__alloyId8.addEventListener("click", refreshRss) : __defers["$.__views.__alloyId8!click!refreshRss"] = true;
         }; else {
             Ti.API.warn("You attempted to attach an Android Menu to a lightweight Window");
             Ti.API.warn("or other UI component which does not have an Android activity.");
@@ -51,7 +51,7 @@ function Controller() {
         id: "master"
     });
     $.__views.master && $.addTopLevelView($.__views.master);
-    $.__views.master.addEventListener("open", __alloyId8);
+    $.__views.master.addEventListener("open", __alloyId10);
     $.__views.table = Ti.UI.createTableView({
         id: "table"
     });
@@ -61,7 +61,7 @@ function Controller() {
     _.extend($, $.__views);
     var rss = require("rss");
     refreshRss();
-    __defers["$.__views.__alloyId6!click!refreshRss"] && $.__views.__alloyId6.addEventListener("click", refreshRss);
+    __defers["$.__views.__alloyId8!click!refreshRss"] && $.__views.__alloyId8.addEventListener("click", refreshRss);
     __defers["$.__views.refreshButton!click!refreshRss"] && $.__views.refreshButton.addEventListener("click", refreshRss);
     __defers["$.__views.table!click!openDetail"] && $.__views.table.addEventListener("click", openDetail);
     _.extend($, exports);

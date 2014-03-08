@@ -10,5 +10,8 @@
 		fontFamily: 'Helvetica Neue'
 	},
 	textAlign: 'center'
+},
+"beritaTab": {
+	icon :'none'
 }
 
