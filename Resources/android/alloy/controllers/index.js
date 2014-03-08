@@ -19,27 +19,13 @@ function Controller() {
         icon: "KS_nav_ui.png"
     });
     __alloyId0.push($.__views.beritaTab);
-    $.__views.kandidatWin = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        navBarHidden: true,
-        id: "kandidatWin",
-        title: "Kandidat"
+    $.__views.kandidat = Alloy.createController("kandidat", {
+        id: "kandidat"
     });
-    $.__views.__alloyId2 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        font: {
-            fontSize: 20,
-            fontFamily: "Helvetica Neue"
-        },
-        textAlign: "center",
-        text: "Kandidat",
-        id: "__alloyId2"
-    });
-    $.__views.kandidatWin.add($.__views.__alloyId2);
     $.__views.kandidatTab = Ti.UI.createTab({
-        window: $.__views.kandidatWin,
+        window: $.__views.kandidat.getViewEx({
+            recurse: true
+        }),
         title: "Kandidat",
         id: "kandidatTab",
         icon: "KS_nav_views.png"

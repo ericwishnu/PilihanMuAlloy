@@ -1,0 +1,9 @@
+<Alloy>
+	<Window>
+		
+		<TableView id="kandidatTableView">
+	
+		</TableView>
+	</Window>
+
+</Alloy>
