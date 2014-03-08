@@ -1,0 +1,7 @@
+<Alloy>
+
+	<Window>
+		<Require src="header" id="header"/>
+		<WebView id="web"/>
+	</Window>
+</Alloy>
